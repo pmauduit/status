@@ -12,12 +12,12 @@ import org.restlet.representation.Variant;
 import org.restlet.resource.ResourceException;
 import org.restlet.resource.ServerResource;
 
-public class StatusResource extends ServerResource {
+public class InstancesResource extends ServerResource {
 
-  public StatusResource() {
+  public InstancesResource() {
     super();
   }
-  public StatusResource(Context context, Request request, Response response) {
+  public InstancesResource(Context context, Request request, Response response) {
     getVariants().add(new Variant(MediaType.APPLICATION_JSON));
   }
 

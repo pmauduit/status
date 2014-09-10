@@ -1,7 +1,8 @@
 package org.georchestra.status;
 
 import org.apache.log4j.Logger;
-import org.georchestra.status.resources.StatusResource;
+import org.georchestra.status.resources.InstanceDetailsResource;
+import org.georchestra.status.resources.InstancesResource;
 import org.restlet.Application;
 import org.restlet.Context;
 import org.restlet.Restlet;
@@ -21,8 +22,8 @@ public class StatusApplication extends Application {
   public Restlet createInboundRoot() {
     Router router = new Router(getContext());
 
-    router.attach("/status", StatusResource.class);
-
+    router.attach("/instances", InstancesResource.class);
+    router.attach("/instance/{instanceId}", InstanceDetailsResource.class);
     LOG.warn("router created");
     return router;
   }
