@@ -1,7 +1,6 @@
-package org.georchestra.status;
+package org.georchestra.status.resources;
 
-import java.util.Calendar;
-
+import org.json.JSONObject;
 import org.restlet.Context;
 import org.restlet.Request;
 import org.restlet.Response;
@@ -17,18 +16,16 @@ public class StatusResource extends ServerResource {
   public StatusResource() {
     super();
   }
-  public StatusResource(Context context, Request request, Response response) {     
-    getVariants().add(new Variant(MediaType.TEXT_PLAIN));
+  public StatusResource(Context context, Request request, Response response) {
+    getVariants().add(new Variant(MediaType.APPLICATION_JSON));
   }
 
   @Override
   protected Representation get() throws ResourceException {
-    String message = "Hello World!" +
-      " \n\nTime of request is:"
-      + Calendar.getInstance()
-      .getTime().toString();
+    JSONObject ret = new JSONObject();
+    ret.put("blah", "blih");
 
-    return new StringRepresentation(message, MediaType.TEXT_PLAIN);
+    return new StringRepresentation(ret.toString(4), MediaType.APPLICATION_JSON);
   }
 
 }
