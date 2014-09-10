@@ -1,5 +1,6 @@
 package org.georchestra.status.resources;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.restlet.Context;
 import org.restlet.Request;
@@ -23,7 +24,9 @@ public class StatusResource extends ServerResource {
   @Override
   protected Representation get() throws ResourceException {
     JSONObject ret = new JSONObject();
-    ret.put("blah", "blih");
+    JSONArray instances = new JSONArray();
+
+    ret.put("instances", instances);
 
     return new StringRepresentation(ret.toString(4), MediaType.APPLICATION_JSON);
   }
