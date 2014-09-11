@@ -2,8 +2,10 @@ package org.georchestra.status.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +20,12 @@ public class Service {
     @Column(name = "instance_id")
     private int instanceId;
 
+    private Instance instance;
 
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    public Instance getInstance() {
+        return this.instance;
+    }
 
 }

@@ -38,6 +38,7 @@ public class InstanceDetailsResource extends ServerResource {
       }
       ret.put("instance_id", rid);
 
+
       return new StringRepresentation(ret.toString(4), MediaType.APPLICATION_JSON);
     }
 
