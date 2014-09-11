@@ -17,7 +17,6 @@ public class StatusApplicationTest {
     @Before
     public void setUp() {
         statusApp = new StatusApplication();
-
     }
 
     /**
@@ -26,7 +25,6 @@ public class StatusApplicationTest {
      */
     @Test
     public void testStatusApplication() {
-        assert statusApp != null;
         Request req = new Request();
         req.setMethod(Method.GET);
         req.setResourceRef("/instances");
