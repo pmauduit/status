@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.json.JSONObject;
+
 @Entity
 @Table(name = "instances")
 public class Instance {
@@ -25,9 +27,10 @@ public class Instance {
     @Column(name = "https")
     private boolean isHttps;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
     private Set<Service> services = new HashSet<Service>();
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
+
     public Set<Service> getServices() {
         return this.services;
     }
@@ -57,5 +60,11 @@ public class Instance {
 
     public void setHttps(boolean isHttps) {
         this.isHttps = isHttps;
+    }
+
+    public JSONObject toJSON() {
+        return new JSONObject().put("id", id)
+                .put("host", host)
+                .put("isHttps", isHttps);
     }
 }

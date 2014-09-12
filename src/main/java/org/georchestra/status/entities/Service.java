@@ -17,13 +17,12 @@ public class Service {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "instance_id")
-    private int instanceId;
-
+    @ManyToOne(fetch = FetchType.LAZY)
     private Instance instance;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+
+
     public Instance getInstance() {
         return this.instance;
     }

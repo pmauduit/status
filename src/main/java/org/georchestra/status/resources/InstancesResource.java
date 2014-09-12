@@ -1,6 +1,11 @@
 package org.georchestra.status.resources;
 
+import java.util.List;
+
 import org.georchestra.status.HibernateUtil;
+import org.georchestra.status.entities.Instance;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,11 +32,26 @@ public class InstancesResource extends ServerResource {
   protected Representation get() throws ResourceException {
     JSONObject ret = new JSONObject();
     JSONArray instances = new JSONArray();
-    ret.put("instances", instances);
+
 
     SessionFactory sf = HibernateUtil.getSessionFactory();
-    sf.openSession();
+    Session s = sf.openSession();
+    Criteria c = s.createCriteria(Instance.class);
+    c.setMaxResults(50);
 
+    Instance inst = new Instance();
+    inst.setId(143);
+    inst.setHttps(false);
+    inst.setHost("sdi.georchestra.org");
+    s.save(inst);
+
+    List<Object> list = s.createSQLQuery("SELECT * FROM status.instances").list();
+    for (Object i : list) {
+        instances.put(i.toString());
+    }
+
+    s.disconnect();
+    ret.put("instances", instances);
     return new StringRepresentation(ret.toString(4), MediaType.APPLICATION_JSON);
   }
 

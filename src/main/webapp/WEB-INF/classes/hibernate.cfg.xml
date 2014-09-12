@@ -10,5 +10,7 @@
 		<property name="hibernate.connection.username">www-data</property>
 		<property name="hibernate.connection.password">www-data</property>
 		<property name="hibernate.hbm2ddl.auto">create</property>
+        <mapping class="org.georchestra.status.entities.Instance" />
+        <mapping class="org.georchestra.status.entities.Service" />
 	</session-factory>
 </hibernate-configuration>
