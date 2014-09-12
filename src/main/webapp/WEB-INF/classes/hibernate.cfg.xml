@@ -4,8 +4,8 @@
 <hibernate-configuration>
 	<session-factory>
 		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-		<property name="hibernate.connection.driver_class">com.postgresql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:postgres://localhost/georchestra</property>
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/georchestra</property>
 		<property name="hibernate.connection.schema">status</property>
 		<property name="hibernate.connection.username">www-data</property>
 		<property name="hibernate.connection.password">www-data</property>

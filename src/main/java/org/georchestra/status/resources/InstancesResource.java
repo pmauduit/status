@@ -1,5 +1,7 @@
 package org.georchestra.status.resources;
 
+import org.georchestra.status.HibernateUtil;
+import org.hibernate.SessionFactory;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.restlet.Context;
@@ -25,8 +27,10 @@ public class InstancesResource extends ServerResource {
   protected Representation get() throws ResourceException {
     JSONObject ret = new JSONObject();
     JSONArray instances = new JSONArray();
-
     ret.put("instances", instances);
+
+    SessionFactory sf = HibernateUtil.getSessionFactory();
+    sf.openSession();
 
     return new StringRepresentation(ret.toString(4), MediaType.APPLICATION_JSON);
   }
