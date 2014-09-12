@@ -51,7 +51,12 @@
       <artifactId>hibernate-core</artifactId>
       <version>4.3.6.Final</version>
     </dependency>
-    <!-- Testing purposes -->
+	<dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>9.3-1102-jdbc41</version>
+	</dependency>
+	<!-- Testing purposes -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
