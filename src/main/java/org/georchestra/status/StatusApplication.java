@@ -14,9 +14,6 @@ public class StatusApplication extends Application {
   private final Logger  LOG = Logger.getLogger(this.getClass());
   public StatusApplication() {
     super();
-    //SessionFactory sf = HibernateUtil.getSessionFactory();
-    //Session s = sf.openSession();
-
   }
 
   public StatusApplication(Context parentContext) {

@@ -39,18 +39,11 @@ public class InstancesResource extends ServerResource {
     Criteria c = s.createCriteria(Instance.class);
     c.setMaxResults(50);
 
-    Instance inst = new Instance();
-    inst.setId(143);
-    inst.setHttps(false);
-    inst.setHost("sdi.georchestra.org");
-    s.save(inst);
-
-    List<Object> list = s.createSQLQuery("SELECT * FROM status.instances").list();
-    for (Object i : list) {
-        instances.put(i.toString());
+    List<Instance> list = c.list();
+    for (Instance i : list) {
+        instances.put(i.toJSON());
     }
 
-    s.disconnect();
     ret.put("instances", instances);
     return new StringRepresentation(ret.toString(4), MediaType.APPLICATION_JSON);
   }

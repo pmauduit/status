@@ -27,7 +27,7 @@ public class Instance {
     @Column(name = "https")
     private boolean isHttps;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "instance")
     private Set<Service> services = new HashSet<Service>();
 
 

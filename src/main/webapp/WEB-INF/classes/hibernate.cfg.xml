@@ -7,9 +7,10 @@
 		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
 		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/georchestra</property>
 		<property name="hibernate.connection.schema">status</property>
+        <property name="hibernate.default_schema">status</property>
 		<property name="hibernate.connection.username">www-data</property>
 		<property name="hibernate.connection.password">www-data</property>
-		<property name="hibernate.hbm2ddl.auto">create</property>
+		<property name="hibernate.hbm2ddl.auto">create-drop</property>
         <mapping class="org.georchestra.status.entities.Instance" />
         <mapping class="org.georchestra.status.entities.Service" />
 	</session-factory>

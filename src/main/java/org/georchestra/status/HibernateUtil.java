@@ -1,11 +1,14 @@
 package org.georchestra.status;
 
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 
 public class HibernateUtil {
+    private static final Logger  LOG = Logger.getLogger(HibernateUtil.class);
+
     private static final SessionFactory sessionFactory = buildSessionFactory();
 
     private static SessionFactory buildSessionFactory() {
@@ -13,8 +16,7 @@ public class HibernateUtil {
             return new Configuration().configure().buildSessionFactory(new StandardServiceRegistryBuilder().build());
         }
         catch (Throwable ex) {
-            // Make sure you log the exception, as it might be swallowed
-            System.out.println("Initial SessionFactory creation failed." + ex);
+            LOG.error("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
@@ -24,7 +26,6 @@ public class HibernateUtil {
     }
 
     public static void shutdown() {
-        // Close caches and connection pools
         getSessionFactory().close();
     }
 }
