@@ -13,5 +13,6 @@
 		<property name="hibernate.hbm2ddl.auto">create-drop</property>
         <mapping class="org.georchestra.status.entities.Instance" />
         <mapping class="org.georchestra.status.entities.Service" />
+        <mapping class="org.georchestra.status.entities.JobResult" />
 	</session-factory>
 </hibernate-configuration>

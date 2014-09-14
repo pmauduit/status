@@ -3,6 +3,7 @@ package org.georchestra.status;
 import org.apache.log4j.Logger;
 import org.georchestra.status.resources.InstanceDetailsResource;
 import org.georchestra.status.resources.InstancesResource;
+import org.georchestra.status.resources.RunJobResource;
 import org.restlet.Application;
 import org.restlet.Context;
 import org.restlet.Restlet;
@@ -25,6 +26,8 @@ public class StatusApplication extends Application {
 
     router.attach("/instances", InstancesResource.class);
     router.attach("/instance/{instanceId}", InstanceDetailsResource.class);
+    router.attach("/service/{jobId}/run", RunJobResource.class);
+
     LOG.warn("router created");
     return router;
   }

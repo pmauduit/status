@@ -1,5 +1,8 @@
 package org.georchestra.status.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -31,6 +35,9 @@ public class Service {
 
     @Column(name =  "class")
     private Class<AbstractServiceType> className;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "service")
+    private Set<JobResult> jobresults = new HashSet<JobResult>();
 
     public Instance getInstance() {
         return this.instance;

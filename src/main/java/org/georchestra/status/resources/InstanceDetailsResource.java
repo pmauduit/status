@@ -46,17 +46,19 @@ public class InstanceDetailsResource extends ServerResource {
       Session s = HibernateUtil.getSessionFactory().openSession();
 
       Instance curI = (Instance) s.get(Instance.class, rid);
-      ret.put("instance", curI.toJSON());
-      JSONArray services = new JSONArray();
+      if (curI == null) {
+          ret.put("error", "not found");
+          this.setStatus(Status.CLIENT_ERROR_NOT_FOUND);
+      } else {
+          ret.put("instance", curI.toJSON());
+          JSONArray services = new JSONArray();
 
-      Set<Service> ls = curI.getServices();
-      for (Service ss: ls) {
-          services.put(ss.toJSON());
+          Set<Service> ls = curI.getServices();
+          for (Service ss: ls) {
+              services.put(ss.toJSON());
+          }
+          ret.put("services", services);
       }
-      ret.put("services", services);
-
-
-
       return new StringRepresentation(ret.toString(4), MediaType.APPLICATION_JSON);
     }
 

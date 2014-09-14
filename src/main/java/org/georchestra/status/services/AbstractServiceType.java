@@ -19,4 +19,12 @@ package org.georchestra.status.services;
  */
 public abstract class AbstractServiceType {
 
+    public void doRun() {
+        this.run();
+    }
+
+    protected abstract void run();
+
+    protected void saveJobResult() {}
+
 }
